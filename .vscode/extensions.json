@@ -1,0 +1,15 @@
+{
+	// List of extensions which should be recommended for users of this workspace.
+	"recommendations": [
+		"ms-vscode.cpptools",
+		"austin.code-gnu-global",
+		"hbenl.vscode-test-explorer",
+		"matepek.vscode-catch2-test-adapter",
+		"twxs.cmake",
+		"ms-vscode.cmake-tools"
+	],
+	// List of extensions recommended by VS Code that should not be recommended for users of this workspace.
+	"unwantedRecommendations": [
+
+	]
+}
