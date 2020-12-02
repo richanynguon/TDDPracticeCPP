@@ -8,13 +8,12 @@ include_directories(${GTEST_INCLUDE_DIRS})
 include(CTest)
 enable_testing()
 
-add_executable(cpp_proj main.cpp)
+file(GLOB MAIN_SOURCE_FILES "./*.cpp")
+file(GLOB TEST_SOURCE_FILES "./Tests/*.cpp" "./Tests/Mocks/*.cpp")
 
-add_executable(cpp_proj_tests ./Tests/main.cpp ./Tests/tests.cpp)
-target_link_libraries(cpp_proj_tests ${GTEST_LIBRARIES})
+add_executable(cpp_proj main.cxx ${MAIN_SOURCE_FILES})
 
-gtest_add_tests(TARGET cpp_proj_tests)
+add_executable(cpp_proj_tests ${MAIN_SOURCE_FILES} ${TEST_SOURCE_FILES})
+target_link_libraries(cpp_proj_tests ${GTEST_LIBRARIES} "/usr/local/lib/libgmock.a")
 
-set(CPACK_PROJECT_NAME ${PROJECT_NAME})
-set(CPACK_PROJECT_VERSION ${PROJECT_VERSION})
-include(CPack)
+gtest_discover_tests(cpp_proj_tests)
